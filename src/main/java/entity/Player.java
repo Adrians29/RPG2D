@@ -29,6 +29,7 @@ public class Player extends Entity {
     public void getPlayerImage() {
         try {
             down1 = ImageIO.read(getClass().getResourceAsStream("/player/mob front view down 1.png.png"));
+            center = ImageIO.read(getClass().getResourceAsStream("/player/mob front view down.png.png"));
             down2 = ImageIO.read(getClass().getResourceAsStream("/player/mob front view down 2.png.png"));
             up1 = ImageIO.read(getClass().getResourceAsStream("/player/mob front view down 1.png.png"));
             up2 = ImageIO.read(getClass().getResourceAsStream("/player/mob front view down 1.png.png"));
@@ -56,6 +57,20 @@ public class Player extends Entity {
             direction = "right";
             x += speed;
         }
+
+        spriteCounter++;
+        if(spriteCounter > 10) {
+            if (spriteNum == 1) {
+                spriteNum = 2;
+            } else if (spriteNum == 2) {
+                spriteNum = 3;
+            } else if (spriteNum == 3) {
+                spriteNum = 4;
+            } else if (spriteNum == 4) {
+                spriteNum = 1;
+            }
+            spriteCounter = 0;
+        }
     }
     public void draw(Graphics2D g2) {
         //g2.setColor(Color.white);
@@ -64,16 +79,34 @@ public class Player extends Entity {
         BufferedImage image = null;
         switch (direction) {
             case "up" -> {
-                image = up1;
+                if (spriteNum == 1) {
+                    image = up1;
+                } else if (spriteNum == 2) {
+                    image = up2;
+                }
             }
             case "down" -> {
-                image = down1;
+                if (spriteNum == 1) {
+                    image = down1;
+                } else if (spriteNum == 2 || spriteNum == 4) {
+                    image = center;
+                } else if (spriteNum == 3) {
+                    image = down2;
+                }
             }
             case "left" -> {
-                image = left1;
+                if (spriteNum == 1) {
+                    image = left1;
+                } else if (spriteNum == 2) {
+                    image = left2;
+                }
             }
             case "right" -> {
-                image = right1;
+                if (spriteNum == 1) {
+                    image = right1;
+                } else if (spriteNum == 2) {
+                    image = right2;
+                }
             }
         }
         g2.drawImage(image, x, y, gamePanel.titleSize, gamePanel.titleSize, null);

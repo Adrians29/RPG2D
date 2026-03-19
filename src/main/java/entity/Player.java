@@ -30,7 +30,7 @@ public class Player extends Entity {
         try {
             down1 = ImageIO.read(getClass().getResourceAsStream("/player/mob_front_down_1.png.png"));
             center = ImageIO.read(getClass().getResourceAsStream("/player/mob_front_down.png.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("player/mob_front_down_2.png.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/player/mob_front_down_2.png.png"));
             up1 = ImageIO.read(getClass().getResourceAsStream("/player/mob_front_up_1.png.png"));
             up = ImageIO.read(getClass().getResourceAsStream("/player/mob_front_up.png.png"));
             up2 = ImageIO.read(getClass().getResourceAsStream("/player/mob_front_up_2.png.png"));
@@ -84,7 +84,9 @@ public class Player extends Entity {
             case "up" -> {
                 if (spriteNum == 1) {
                     image = up1;
-                } else if (spriteNum == 2) {
+                } else if (spriteNum == 2 || spriteNum == 4) {
+                    image = up;
+                } else if (spriteNum == 3) {
                     image = up2;
                 }
             }
@@ -100,14 +102,18 @@ public class Player extends Entity {
             case "left" -> {
                 if (spriteNum == 1) {
                     image = left1;
-                } else if (spriteNum == 2) {
+                } else if (spriteNum == 2 || spriteNum == 4) {
+                    image = left;
+                } else if (spriteNum == 3) {
                     image = left2;
                 }
             }
             case "right" -> {
                 if (spriteNum == 1) {
                     image = right1;
-                } else if (spriteNum == 2) {
+                } else if (spriteNum == 2 || spriteNum == 4) {
+                    image = right;
+                } else if (spriteNum == 3) {
                     image = right2;
                 }
             }

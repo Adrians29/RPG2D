@@ -79,39 +79,31 @@ public class Player extends Entity {
         BufferedImage image = null;
         switch (direction) {
             case "up" -> {
-                if (spriteNum == 1) {
-                    image = up1;
-                } else if (spriteNum == 2 || spriteNum == 4) {
-                    image = up;
-                } else if (spriteNum == 3) {
-                    image = up2;
+                switch (spriteNum) {
+                    case 1 -> image = up1;
+                    case 2, 4 -> image = up;
+                    case 3 -> image = up2;
                 }
             }
             case "down" -> {
-                if (spriteNum == 1) {
-                    image = down1;
-                } else if (spriteNum == 2 || spriteNum == 4) {
-                    image = center;
-                } else if (spriteNum == 3) {
-                    image = down2;
+                switch (spriteNum) {
+                    case 1 -> image = down1;
+                    case 2, 4 -> image = center;
+                    case 3 -> image = down2;
                 }
             }
             case "left" -> {
-                if (spriteNum == 1) {
-                    image = left1;
-                } else if (spriteNum == 2 || spriteNum == 4) {
-                    image = left;
-                } else if (spriteNum == 3) {
-                    image = left2;
+                switch (spriteNum) {
+                    case 1 -> image = left1;
+                    case 2, 4 -> image = left;
+                    case 3 -> image = left2;
                 }
             }
             case "right" -> {
-                if (spriteNum == 1) {
-                    image = right1;
-                } else if (spriteNum == 2 || spriteNum == 4) {
-                    image = right;
-                } else if (spriteNum == 3) {
-                    image = right2;
+                switch (spriteNum) {
+                    case 1 -> image = right1;
+                    case 2, 4 -> image = right;
+                    case 3 -> image = right2;
                 }
             }
         }
